@@ -23,7 +23,7 @@ public class ProductTest {
         }
 
         try {
-            Product.createProductByParams(1, null, null, "http://rbc.ru", "http://rbc.ru");
+            Product.createProductByParams(1, null, null, "http://lenta.ru", "http://rbc.ru");
         } catch (IllegalArgumentException ex) {
             assertEquals("productDescription must be set for productId = 1", ex.getMessage());
         }
