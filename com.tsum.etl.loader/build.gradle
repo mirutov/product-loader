@@ -1,0 +1,19 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+
+repositories {
+	mavenCentral()
+}
+
+jar {
+	baseName = 'com.tsum.etl.loader'
+}
+
+dependencies {
+	compile project(':com.tsum.etl.common')
+	compile project(':com.tsum.etl.manager')
+	compile "org.springframework:spring-context:4.1.5.RELEASE"
+	compile "org.slf4j:slf4j-api:1.7.9"
+	compile 'ch.qos.logback:logback-classic:1.2.3'
+}
+

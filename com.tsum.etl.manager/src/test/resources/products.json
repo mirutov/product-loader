@@ -1,0 +1,48 @@
+[
+  {
+    "categoryId": "1",
+    "products":
+    [
+      {
+        "productId": "1",
+        "productDescription": "Название: Updated name 1;Размеры: 1-10;Цена: 121;Новая цена: 111 ;Акция: Action 1;Бренд: Brand 1"
+      },
+      {
+        "productId": "2",
+        "productDescription": "Название: Updated name 2;Размеры: 2-20;Цена: 221 ;Новая цена: 211 ;Акция: Action 2;Бренд: Brand 2"
+      }
+    ]
+  },
+  {
+    "categoryId": "2",
+    "products":
+    [
+      {
+        "productId": "3",
+        "productDescription": "Название: Updated name 3;Размеры: 3-30;Цена: 321 ;Новая цена: 311 ;Акция: Action 3;Бренд: Brand 3"
+      }
+    ]
+  },
+  {
+    "categoryId": "3",
+    "products":
+    [
+      {
+        "productId": "5",
+        "productDescription": "Размеры: 5-50;Цена: 521;Акция: Action 5;Бренд: Brand 5"
+      },
+      {
+        "productId": "6",
+        "productDescription": "Название: Updated name 6;Цена: 621;Бренд: Brand 5"
+      },
+      {
+        "productId": "7",
+        "productDescription": "Название: Updated name 7;Размеры: 7-70;Цена: 721;Новая цена: 711;Бренд: Brand 5"
+      },
+      {
+        "productId": "8",
+        "productDescription": "Название: Updated name 8;Размеры: 8-80;Цена: 821;Новая цена: 811;Бренд: Brand 5"
+      }
+    ]
+  }
+]

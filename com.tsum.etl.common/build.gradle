@@ -1,0 +1,16 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+
+repositories {
+    mavenCentral()
+}
+
+jar {
+    baseName = 'com.tsum.etl.common'
+}
+
+dependencies {
+    compile "commons-validator:commons-validator:1.6"
+    testCompile 'junit:junit:4.12'
+}
+

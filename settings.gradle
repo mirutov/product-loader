@@ -1,0 +1,3 @@
+rootProject.name = 'product-loader'
+
+include 'com.tsum.etl.common', 'com.tsum.etl.vkreader', 'com.tsum.etl.tsumwriter', 'com.tsum.etl.manager', 'com.tsum.etl.loader'
