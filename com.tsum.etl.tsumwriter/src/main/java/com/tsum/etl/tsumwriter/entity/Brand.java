@@ -14,7 +14,7 @@ import javax.persistence.Table;
 public class Brand {
     @Id
     @Column(name = "id")
-    private long id;
+    private String id;
 
     @Column(name = "name")
     private String name;
@@ -23,7 +23,7 @@ public class Brand {
 
     }
 
-    public long getId() {
+    public String getId() {
         return id;
     }
 
