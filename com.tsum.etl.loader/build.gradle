@@ -7,6 +7,8 @@ repositories {
 
 jar {
 	baseName = 'com.tsum.etl.loader'
+	exclude("application.properties")
+	exclude("logback-etl.xml")
 }
 
 dependencies {

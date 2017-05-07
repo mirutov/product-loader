@@ -7,7 +7,6 @@ repositories {
 
 jar {
 	baseName = 'com.tsum.etl.manager'
-	exclude("tsum-etl.properties")
 }
 
 configurations {
