@@ -1,14 +1,17 @@
 package com.tsum.etl.common.model;
 
 import org.apache.commons.validator.routines.UrlValidator;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import java.util.HashMap;
+
 
 
 /**
  *  Представление продукта
  */
 public final class Product {
+    private static final Logger logger = LoggerFactory.getLogger(Product.class);
     /**
      *  Идентификатор товара
      */
@@ -113,6 +116,7 @@ public final class Product {
      */
     public static Product createProductByParams(int id, String category, String productDescription,
                                                 String smallPhotoURL, String largePhotoURL) {
+        logger.debug("\nTry to load a product with id: " + id + "\n" + productDescription);
         UrlValidator UrlValidator = new UrlValidator();
         if (!UrlValidator.isValid(smallPhotoURL)) {
             throw new IllegalArgumentException("smallPhotoURL must be a valid URL for productId = " + id);
