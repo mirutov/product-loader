@@ -79,8 +79,8 @@ public class VKProductReader implements ProductReader, InitializingBean {
                     Product product = Product.createProductByParams(photo.getId(),
                             categoryId,
                             photo.getText(),
-                            photo.getPhoto75(),
-                            photo.getPhoto130()
+                            photo.getPhoto604(),
+                            photo.getPhoto807()
                     );
                     products.add(product);
                 } catch (IllegalArgumentException ex) {
