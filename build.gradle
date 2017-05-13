@@ -35,6 +35,10 @@ dependencies {
     compile "org.springframework.boot:spring-boot-starter-logging:1.5.2.RELEASE"
 }
 
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
 task doLast {
     copy {
         from 'com.tsum.etl.loader/src/main/resources/application.properties'
