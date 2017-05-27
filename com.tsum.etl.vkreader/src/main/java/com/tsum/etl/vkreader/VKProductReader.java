@@ -76,11 +76,31 @@ public class VKProductReader implements ProductReader, InitializingBean {
             startIndex += photos.size();
             for (Photo photo : photos) {
                 try {
+                    String smallPhotoURL;
+                    if (photo.getPhoto604() != null) {
+                        smallPhotoURL = photo.getPhoto604();
+                    } else if (photo.getPhoto130() != null) {
+                        smallPhotoURL = photo.getPhoto130();
+                    } else {
+                        smallPhotoURL = photo.getPhoto75();
+                    }
+
+                    String largerPhotoURL;
+                    if (photo.getPhoto2560() != null) {
+                        largerPhotoURL = photo.getPhoto2560();
+                    } else if (photo.getPhoto1280() != null) {
+                        largerPhotoURL = photo.getPhoto1280();
+                    } else if (photo.getPhoto807() != null) {
+                        largerPhotoURL = photo.getPhoto807();
+                    } else {
+                        largerPhotoURL = smallPhotoURL;
+                    }
+
                     Product product = Product.createProductByParams(photo.getId(),
                             categoryId,
                             photo.getText(),
-                            photo.getPhoto604(),
-                            photo.getPhoto807()
+                            smallPhotoURL,
+                            largerPhotoURL
                     );
                     products.add(product);
                 } catch (IllegalArgumentException ex) {
