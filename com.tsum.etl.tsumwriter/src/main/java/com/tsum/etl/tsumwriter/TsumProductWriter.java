@@ -56,9 +56,19 @@ public class TsumProductWriter implements ProductWriter {
                 dbProduct = createDBProduct(product, category, updateTimestamp);
             }
             dbProducts.add(dbProduct);
-            ret.add(product);;
+            ret.add(product);
         }
-        productService.save(dbProducts);
+        try {
+            productService.save(dbProducts);
+        } catch (org.hibernate.exception.LockAcquisitionException ex) {
+            logger.warn("Deadlock was detected for category {} ", categoryExternalId, ex);
+            try {
+                Thread.sleep(5000);
+                productService.save(dbProducts);
+            } catch (Exception finalEx) {
+                throw new RuntimeException(finalEx);
+            }
+        }
         return ret;
     }
 
