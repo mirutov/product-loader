@@ -40,15 +40,16 @@ public class TsumProductWriter implements ProductWriter {
 
     @Transactional
     public Collection<Product> saveProductsToCategory(Collection<Product> products, String categoryExternalId) {
-        LinkedList<Product> ret = new LinkedList<Product>();
+        LinkedList<Product> ret = new LinkedList<>();
         Category category = categoryService.findByExternalId(categoryExternalId);
         if (category == null) {
             logger.warn("Category " + categoryExternalId + " not found");
             return ret;
         }
         Timestamp updateTimestamp = new Timestamp(System.currentTimeMillis());
-        List<com.tsum.etl.tsumwriter.entity.Product> dbProducts = new LinkedList<com.tsum.etl.tsumwriter.entity.Product>();
+        List<com.tsum.etl.tsumwriter.entity.Product> dbProducts = new LinkedList<>();
         for (Product product : products) {
+            Timestamp startTimestamp = new Timestamp(System.currentTimeMillis());
             com.tsum.etl.tsumwriter.entity.Product dbProduct = productService.findById(product.getId());
             if (dbProduct != null) {
                 dbProduct = updateDBProduct(dbProduct, product, category, updateTimestamp);
@@ -57,9 +58,14 @@ public class TsumProductWriter implements ProductWriter {
             }
             dbProducts.add(dbProduct);
             ret.add(product);
+            Timestamp endTimestamp = new Timestamp(System.currentTimeMillis());
+            logger.debug("Processign a product {} finished. {} ms", product.getId(),
+                    endTimestamp.getTime() - startTimestamp.getTime());
         }
         try {
+            logger.debug("Start saving for category {}", categoryExternalId);
             productService.save(dbProducts);
+            logger.debug("Finish saving for category {}", categoryExternalId);
         } catch (org.hibernate.exception.LockAcquisitionException ex) {
             logger.warn("Deadlock was detected for category {} ", categoryExternalId, ex);
             try {
