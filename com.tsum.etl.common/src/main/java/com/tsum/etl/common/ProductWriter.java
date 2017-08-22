@@ -27,7 +27,6 @@ public interface ProductWriter {
      * @return - коллекция сохраненных продуктов
      */
     Collection<Product> saveProductsToCategory(Collection<Product> products, String categoryExternalId);
-
     /**
      * Метод удаляет из хранилища инфорациб о продуктах из указанных категорий, которые были изменены
      * ранее значения параметра timestamp
